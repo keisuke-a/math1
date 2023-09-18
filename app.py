@@ -4,7 +4,15 @@ import openai
 import langchain
 import os
 
+#langchain関連のモジュールを読み込み
+from langchain.llms import OpenAI
+from langchain.agents import load_tools
+from langchain.agents import initialize_agent
+from langchain.agents import AgentType
+from langchain.memory import ConversationBufferMemory
+
 openai.api_key = st.secrets.OpenAIAPI.openai_api_key
+#os.environ["OPENAI_API_KEY"] = st.secrets.OpenAIAPI.openai_api_key
 
 system_prompt = """
 このスレッドの全ての質問に対して以下のルールに厳格に従って答えてください。
