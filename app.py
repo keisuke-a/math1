@@ -12,7 +12,24 @@ from langchain.agents import AgentType
 from langchain.memory import ConversationBufferMemory
 
 openai.api_key = st.secrets.OpenAIAPI.openai_api_key
-#os.environ["OPENAI_API_KEY"] = st.secrets.OpenAIAPI.openai_api_key
+os.environ["OPENAI_API_KEY"] = st.secrets.OpenAIAPI.openai_api_key
+
+llm = OpenAI(model_name="text-davinci-003", temperature=0.2)
+tool_names = ["llm-math"]
+tools = load_tools(tool_names, llm=llm)
+
+memory = ConversationBufferMemory(
+    memory_key="chat_history",
+    return_messages=True,
+)
+
+agent = initialize_agent(
+    tools=tools,
+    llm=llm,
+    agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
+    memory=memory,
+    verbose=True
+)
 
 system_prompt = """
 このスレッドの全ての質問に対して以下のルールに厳格に従って答えてください。
