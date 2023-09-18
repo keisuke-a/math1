@@ -45,7 +45,7 @@ if "messages" not in st.session_state:
 def communicate():
     messages = st.session_state["messages"]
     
-    if messages is not None:
+    if len(messages) > 0:
         user_message = {"role": "user", "content": st.session_state["user_input"]}
         messages.append(user_message)
         bot_message = agent.predict(messages)
