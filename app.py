@@ -2,6 +2,7 @@
 import streamlit as st
 import openai
 import langchain
+import os
 
 openai.api_key = st.secrets.OpenAIAPI.openai_api_key
 
