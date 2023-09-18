@@ -32,7 +32,7 @@ agent = initialize_agent(
 )
 
 system_prompt = """
-計算してください。
+あなたは科学者です。
 """
 
 # st.session_stateを使いメッセージのやりとりを保存
