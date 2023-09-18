@@ -26,7 +26,7 @@ memory = ConversationBufferMemory(
 agent = initialize_agent(
     tools=tools,
     llm=llm,
-    agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
+    agent=AgentType.CONVERSATIONAL_REACT_DESCRIPTION,
     memory=memory,
     verbose=True
 )
@@ -45,14 +45,6 @@ def communicate():
     messages = st.session_state["messages"]
     bot_message = agent.run(st.session_state["user_input"])
     messages.append(bot_message)
-
-    
-#    if len(messages) > 0:
-#        user_message = {"role": "user", "content": st.session_state["user_input"]}
-#        messages.append(user_message)
-#        bot_message = agent.run(st.session_state["user_input"])
-#        messages.append(bot_message)
-
     st.session_state["user_input"] = ""  # 入力欄を消去
 
 
@@ -67,8 +59,3 @@ if st.session_state["messages"]:
 
     for message in reversed(messages[1:]):  # 直近のメッセージを上に
         st.write(message)
-#        speaker = "🙂"
-#        if message["role"]=="assistant":
-#            speaker="🔮"
-#
-#        st.write(speaker + ": " + message["content"])
