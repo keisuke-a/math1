@@ -44,8 +44,8 @@ def communicate():
 
 
 # ユーザーインターフェイスの構築
-st.title(" 「AIタロット占い」ボット")
-st.write("あなたの運勢をタロットで占います。何を占って欲しいですか？")
+st.title("計算.bot")
+st.write("計算問題を出してください。")
 
 user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
 
