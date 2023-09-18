@@ -44,6 +44,7 @@ if "messages" not in st.session_state:
 def communicate():
     messages = st.session_state["messages"]
     bot_message = agent.run(st.session_state["user_input"])
+    messages.append(st.session_state["user_input"])
     messages.append(bot_message)
     st.session_state["user_input"] = ""  # 入力欄を消去
 
