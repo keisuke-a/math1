@@ -44,8 +44,8 @@ if "messages" not in st.session_state:
 # チャットボットとやりとりする関数
 def communicate():
     messages = st.session_state["messages"]
-    bot_message = agent.run(st.session_state["user_input"]) #シンプルに修正
-    messages.append(bot_message)　#シンプルに修正
+    bot_message = agent.run(st.session_state["user_input"])
+    messages.append(bot_message)
 
     
 #    if len(messages) > 0:
