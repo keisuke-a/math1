@@ -48,7 +48,7 @@ def communicate():
     if len(messages) > 0:
         user_message = {"role": "user", "content": st.session_state["user_input"]}
         messages.append(user_message)
-        bot_message = agent.run(messages)
+        bot_message = agent.run("1+1") #ここ作業中
         messages.append(bot_message)
 
     st.session_state["user_input"] = ""  # 入力欄を消去
